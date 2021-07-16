@@ -1,0 +1,27 @@
+version: "3"
+services: 
+    chat-client:
+        # stdin_open: true
+        # tty: true
+        build:
+            context: ./client
+            dockerfile: Dockerfile.dev
+        ports:
+            - "3000:3000"
+        volumes: 
+            - ./client:/app
+        # env_file: 
+        #     - ./.env
+    chat-server:
+        # stdin_open: true
+        # tty: true
+        build:
+            context: ./server
+            dockerfile: Dockerfile.dev
+        ports:
+            - "5001:5001"
+            - "8500:8500"
+        volumes: 
+            - ./server:/app
+        # env_file: 
+        #     - ./.env
